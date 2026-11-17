@@ -1,71 +1,137 @@
-const obra = document.querySelector(".obra");
-const faenas = Array.from(obra.querySelectorAll("[data-faena]"));
-const enlaces = Array.from(obra.querySelectorAll("[data-enlace-faena]"));
-const indice = obra.querySelector(".indice-faenas");
-const linea = indice.querySelector(".timeline");
-const control = obra.querySelector(".indice-control");
+// PORTADA. El HTML contiene una sola lista de imágenes y un solo menú.
+const portada = document.querySelector(".portada");
+const menu = document.getElementById("menu-principal");
+const diapositivas = Array.from(document.querySelectorAll(".diapositivas img"));
+const fondoMenu = menu.querySelector(".fondo-menu");
+const movimientoReducido = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-linea.style.setProperty("--total-faenas", enlaces.length);
-obra.setAttribute("data-interactiva", "");
-control.hidden = false;
+// Reutiliza las mismas imágenes detrás del menú cuando queda fijo arriba.
+for (const imagen of diapositivas) {
+  const copia = imagen.cloneNode(true);
+  copia.removeAttribute("fetchpriority");
+  fondoMenu.append(copia);
+}
+const miniaturas = Array.from(fondoMenu.children);
+const intervaloImagenes = 3800; // Milisegundos entre cambios; el fundido dura 1,2 s en CSS.
+let imagenActual = 0;
+let relojImagenes;
+
+function cambiarImagen() {
+  const siguiente = (imagenActual + 1) % diapositivas.length;
+  if (!diapositivas[siguiente].complete || !diapositivas[siguiente].naturalWidth) return;
+  diapositivas[imagenActual].classList.remove("activa");
+  miniaturas[imagenActual].classList.remove("activa");
+  diapositivas[siguiente].classList.add("activa");
+  miniaturas[siguiente].classList.add("activa");
+  imagenActual = siguiente;
+}
+
+function ajustarDiapositivas() {
+  clearInterval(relojImagenes);
+  if (!movimientoReducido.matches && !document.hidden && diapositivas.length > 1) {
+    relojImagenes = setInterval(cambiarImagen, intervaloImagenes);
+  }
+}
+document.addEventListener("visibilitychange", ajustarDiapositivas);
+movimientoReducido.addEventListener("change", ajustarDiapositivas);
+ajustarDiapositivas();
+
+// ÍNDICE DE FAENAS. Cada enlace apunta a un artículo que permanece en la página.
+const indice = document.querySelector(".indice-vertical");
+const controlIndice = indice.querySelector(".indice-control");
+const listaFaenas = indice.querySelector(".lista-faenas");
+const enlacesFaena = Array.from(listaFaenas.querySelectorAll("a"));
+const faenas = enlacesFaena.map(enlace => document.getElementById(enlace.hash.slice(1)));
 
 function abrirIndice(abierto) {
-  if (!abierto && indice.contains(document.activeElement)) {
-    control.focus({ preventScroll: true });
-  }
-  indice.hidden = !abierto;
-  control.setAttribute("aria-expanded", String(abierto));
-  control.setAttribute("aria-label", abierto ? "Contraer índice de faenas" : "Desplegar índice de faenas");
+  indice.classList.toggle("abierto", abierto);
+  controlIndice.setAttribute("aria-expanded", String(abierto));
+  controlIndice.setAttribute("aria-label", abierto ? "Ocultar títulos de las faenas" : "Mostrar títulos de las faenas");
+  controlIndice.querySelector("span").textContent = abierto ? "−" : "+";
 }
-
-control.addEventListener("click", () => abrirIndice(indice.hidden));
-
-let sobrepasado;
-function ajustarIndiceAlDesplazamiento() {
-  const sigueBajando = obra.getBoundingClientRect().top < -105;
-  if (sigueBajando !== sobrepasado) {
-    sobrepasado = sigueBajando;
-    abrirIndice(!sobrepasado);
+controlIndice.hidden = false;
+controlIndice.addEventListener("click", () => abrirIndice(!indice.classList.contains("abierto")));
+indice.addEventListener("pointerenter", event => {
+  if (event.pointerType === "mouse") abrirIndice(true);
+});
+indice.addEventListener("pointerleave", () => {
+  if (!indice.contains(document.activeElement)) abrirIndice(false);
+});
+indice.addEventListener("focusin", event => {
+  if (event.target !== controlIndice) abrirIndice(true);
+});
+indice.addEventListener("focusout", event => {
+  if (!indice.contains(event.relatedTarget)) abrirIndice(false);
+});
+indice.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    controlIndice.focus({ preventScroll: true });
+    abrirIndice(false);
   }
-}
-window.addEventListener("scroll", ajustarIndiceAlDesplazamiento, { passive: true });
+});
+listaFaenas.addEventListener("click", event => {
+  if (event.target.closest("a")) abrirIndice(false);
+});
+document.addEventListener("pointerdown", event => {
+  if (!indice.contains(event.target)) abrirIndice(false);
+});
 
-function elegirFaena(origen) {
-  const i = enlaces.findIndex(enlace => enlace.hash === location.hash);
-  const seleccion = Math.max(0, i);
-  const focoSalida = document.activeElement?.closest("[data-faena]");
+// Un único controlador de desplazamiento actualiza el menú y el punto vertical.
+// La faena activa es la última cuyo título pasó por el primer cuarto de pantalla.
+const enlacesMenu = Array.from(menu.querySelectorAll(".menu-enlaces a"));
+const seccionesMenu = enlacesMenu.map(enlace => document.getElementById(enlace.hash.slice(1)));
 
-  faenas.forEach((faena, n) => { faena.hidden = n !== seleccion; });
+function marcarEnlace(enlaces, activo) {
   enlaces.forEach((enlace, n) => {
-    if (n === seleccion) enlace.setAttribute("aria-current", "location");
+    if (n === activo) enlace.setAttribute("aria-current", "location");
     else enlace.removeAttribute("aria-current");
   });
-  linea.style.setProperty("--marcador", ((seleccion + .5) / enlaces.length * 100) + "%");
-
-  if (focoSalida?.hidden || origen === "contenido") {
-    faenas[seleccion].focus({ preventScroll: true });
-  }
-  if (i !== -1 && (origen !== "indice" || sobrepasado)) {
-    obra.scrollIntoView();
-  }
-  ajustarIndiceAlDesplazamiento();
 }
 
-obra.addEventListener("click", event => {
-  const enlace = event.target.closest('a[href^="#faena-"]');
-  if (!enlace || event.defaultPrevented || event.button !== 0 ||
-      event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+function posicionActual(secciones, referencia) {
+  let actual = 0;
+  secciones.forEach((seccion, n) => {
+    if (seccion.getBoundingClientRect().top <= referencia) actual = n;
+  });
+  return actual;
+}
 
-  event.preventDefault();
-  if (location.hash !== enlace.hash) history.pushState(null, "", enlace.hash);
-  elegirFaena(indice.contains(enlace) ? "indice" : "contenido");
+function actualizarRecorrido() {
+  menu.classList.toggle("fija", window.scrollY >= portada.offsetHeight * .8);
+  const referencia = menu.offsetHeight + window.innerHeight * .22;
+  marcarEnlace(enlacesMenu, posicionActual(seccionesMenu, referencia));
+
+  const actual = posicionActual(faenas, referencia);
+  marcarEnlace(enlacesFaena, actual);
+  const enlace = enlacesFaena[actual];
+  listaFaenas.style.setProperty("--marcador", (enlace.offsetTop + enlace.offsetHeight / 2) + "px");
+}
+
+let fotogramaPendiente = false;
+function solicitarActualizacion() {
+  if (fotogramaPendiente) return;
+  fotogramaPendiente = true;
+  requestAnimationFrame(() => {
+    actualizarRecorrido();
+    fotogramaPendiente = false;
+  });
+}
+window.addEventListener("scroll", solicitarActualizacion, { passive: true });
+window.addEventListener("resize", solicitarActualizacion);
+window.addEventListener("hashchange", solicitarActualizacion);
+window.addEventListener("load", solicitarActualizacion);
+
+// La altura real del menú evita que un enlace deje un título tapado.
+const medidaMenu = new ResizeObserver(() => {
+  document.documentElement.style.setProperty("--alto-menu", menu.offsetHeight + "px");
+  solicitarActualizacion();
 });
-window.addEventListener("hashchange", () => elegirFaena("historial"));
-elegirFaena("carga");
-requestAnimationFrame(() => obra.setAttribute("data-marcador-listo", ""));
+medidaMenu.observe(menu);
+actualizarRecorrido();
 
+// CARRUSEL DE EL LUGAR. Tocar la tira o usar Enter / Espacio pausa y reanuda.
 const galeria = document.querySelector("[data-galeria-historica]");
-if (galeria && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+if (galeria && !movimientoReducido.matches) {
   const ventana = galeria.querySelector(".galeria-ventana");
   const pista = galeria.querySelector(".galeria-pista");
   const copia = pista.querySelector(".galeria-grupo").cloneNode(true);

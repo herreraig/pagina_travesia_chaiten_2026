@@ -1,20 +1,28 @@
 # Travesía Chaitén 2026
 
-## Abrir y publicar
+## Instalar y publicar
 
-1. Extrae el ZIP y copia **su contenido** dentro de tu repositorio `pagina_travesia_chaiten_2026`. `index.html` va al lado de tu `README.md`. Acepta reemplazar los archivos de la versión anterior y copia también todo lo que trae `assets/`.
-2. Abre `index.html` en el navegador. Baja hasta **La obra**, elige una faena y vuelve a abrir el índice con la flecha cuando se contraiga.
-3. Cuando estés conforme, en GitHub Desktop haz **Commit to main → Push origin**. Revisa la versión publicada en **Settings → Pages → Visit site**. Los mapas y la tipografía web necesitan conexión.
+1. Extrae el ZIP y copia **su contenido** a tu repositorio `pagina_travesia_chaiten_2026`. Reemplaza los archivos de la versión anterior y copia también `assets/`.
+2. Abre `index.html` en el navegador. La primera pantalla es la portada. Sus cuatro enlaces llevan a Inicio, Las travesías por América, Travesía 2026 y La obra. Al bajar, el menú aparece en el borde superior.
+3. En La obra se leen las cinco faenas seguidas. El índice de la izquierda sigue la lectura. Pasa el mouse sobre él, usa el teclado o toca su botón para ver los títulos.
+4. Para publicar, en GitHub Desktop usa **Commit to main → Push origin** y revisa **Settings → Pages → Visit site**.
 
-## Editar la página en VS Code
+## Editar
 
-- **Portada.** El título está en `index.html`. Para usar otra imagen de fondo, cambia la ruta de `.portada::before` en `styles.css`. La imagen provisoria actual está en `assets/portada-provisoria.svg` y su opacidad es `.6`.
-- **Las travesías por América.** En `index.html` está el mapa histórico incrustado desde el enlace que usa Casiopea. Su selector de años forma parte de esa visualización.
-- **El lugar.** Reemplaza los seis `<img>` dentro de `.galeria-grupo` en `index.html`. El carrusel repite esa lista automáticamente. Para pausarlo, toca directamente la tira de imágenes o sitúa el puntero sobre ella.
-- **La obra.** Cada enlace `data-enlace-faena` apunta a un bloque `data-faena` con el mismo identificador y en el mismo orden. Si cambias un nombre, edítalo en el índice, en el título de la faena y en los enlaces de la faena anterior y siguiente. Conserva el identificador si quieres que sigan funcionando los enlaces compartidos. Por ejemplo, añade `#faena-montaje` al final de la URL para abrir Montaje.
-- **Créditos y derechos.** Actualiza el pie al incorporar registros reales. Completa el nombre de cada autor, las fuentes y las condiciones de uso que correspondan.
+| Archivo | Qué contiene |
+| --- | --- |
+| `index.html` | Todos los textos, enlaces, fotos, mapas y registros. Los comentarios indican dónde empieza cada parte. |
+| `styles.css` | Paleta y tipografía, portada, menú, carrusel, índice vertical y ajustes de celular. Cada bloque tiene un comentario. |
+| `recorrido.js` | Cambio de imágenes, menú fijo, apertura del índice y seguimiento de la faena activa. |
+| `assets/` | Imágenes provisorias para sustituir por los registros definitivos. |
 
-Guarda con **Ctrl+S** y recarga el navegador.
+Guarda con **Ctrl+S** y recarga el navegador. Para cambiar una foto de la portada, edita su ruta `src` dentro de `.diapositivas` en el HTML. Esa lista se reutiliza en el menú superior. La duración entre imágenes es `intervaloImagenes = 3800` en `recorrido.js` y el fundido está en `styles.css`.
+
+Para editar las faenas, conserva su `id`, por ejemplo `faena-montaje`, y actualiza el texto del enlace correspondiente en `.lista-faenas`. Para agregar una faena, añade un artículo y su enlace en el mismo orden. La posición del marcador se calcula a partir de los enlaces y de la lectura.
+
+La velocidad del carrusel está en la regla `desplazar-galeria 72s` del CSS. Para cambiar sus imágenes, edita la lista `.galeria-grupo` en el HTML.
+
+Los mapas y las fuentes web requieren conexión. Las imágenes y los registros locales se pueden abrir desde tu computador. Las autorías se completan en los pies de imagen.
 
 ## Copiables para los registros reales
 
@@ -57,6 +65,6 @@ En `index.html`, busca el título del registro y reemplaza `<p>Registro por inco
 <img src="assets/secuencia-montaje.gif" alt="Describe los pasos de la secuencia" loading="lazy">
 ```
 
-## Referencias de la propuesta
+## Referencias
 
-La paleta clara y las familias tipográficas provienen de [Stella Nova en Casiopea](https://www.wiki.ead.pucv.cl/Stella_Nova/Dise%C3%B1o_CSS_para_Casiopea). El criterio editorial de la bajada serif y los pies de imagen toma *Entre ojo y mano* como referencia. Los seis SVG de ejemplo vienen del proyecto anterior. El marcador del [mapa de Chaitén](https://www.openstreetmap.org/way/225127603) se sitúa en la plaza de la ciudad. Reemplaza el texto y las imágenes provisorias con los registros del taller a medida que lleguen.
+El mapa histórico se incrusta desde su [publicación original](https://herbertspencer.net/travesias-casiopea/), que usa Casiopea. La [paleta y tipografía](https://www.wiki.ead.pucv.cl/Stella_Nova/Dise%C3%B1o_CSS_para_Casiopea) pertenecen a la referencia visual Stella Nova. El texto introductorio se atribuye a e[ad] PUCV y los colaboradores de Casiopea bajo [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es). Los mapas mantienen sus créditos visibles. Las fotos definitivas deberán llevar sus autorías y condiciones de uso.

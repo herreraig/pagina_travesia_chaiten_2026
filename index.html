@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#fcfbf7">
-  <meta name="description" content="Bitácora de la Travesía a Chaitén 2026 de los talleres de Arquitectura y Diseño de la e[ad] PUCV.">
+  <meta name="description" content="Bitácora de la Travesía Chaitén 2026 de los talleres de Arquitectura y Diseño de la e[ad] PUCV.">
   <title>TRAVESÍA CHAITÉN 2026</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,28 +14,40 @@
 </head>
 <body>
 <a class="saltar" href="#contenido">Saltar al contenido</a>
-<header class="cabecera">
-  <div class="contenedor cabecera-fila">
-    <a class="marca" href="#inicio">Travesía Chaitén 2026</a>
-    <nav class="menu" aria-label="Navegación principal">
-      <a href="#inicio">Inicio</a>
-      <a href="#travesia">La obra</a>
-    </nav>
-  </div>
-</header>
 <main id="contenido">
+  <!-- PORTADA. Cambia el título aquí y las imágenes en .diapositivas. -->
   <section class="portada" id="inicio" aria-labelledby="titulo">
+    <div class="diapositivas" aria-hidden="true">
+        <img src="assets/portada-1.svg" width="1200" height="750" alt="" class="activa" fetchpriority="high">
+        <img src="assets/portada-2.svg" width="1200" height="750" alt="">
+        <img src="assets/portada-3.svg" width="1200" height="750" alt="">
+        <img src="assets/portada-4.svg" width="1200" height="750" alt="">
+        <img src="assets/portada-5.svg" width="1200" height="750" alt="">
+        <img src="assets/portada-6.svg" width="1200" height="750" alt="">
+    </div>
     <div class="contenedor portada-centro">
       <p class="identidad"><strong>e[ad]</strong> <span>Escuela de Arquitectura y Diseño</span></p>
       <h1 id="titulo">TRAVESÍA CHAITÉN 2026</h1>
     </div>
+    <!-- Este único menú pasa del pie de la portada al borde superior al bajar. -->
+    <nav class="menu-principal" id="menu-principal" aria-label="Secciones de la página">
+      <div class="fondo-menu" aria-hidden="true"></div>
+      <div class="menu-enlaces">
+        <a href="#inicio">Inicio</a>
+        <a href="#travesias-america">Las travesías por América</a>
+        <a href="#travesia-2026">Travesía 2026</a>
+        <a href="#travesia">La obra</a>
+      </div>
+    </nav>
   </section>
 
-  <section class="contenedor travesias-america" aria-labelledby="travesias-america">
+  <!-- Introducción y mapa histórico alojado por Casiopea. -->
+  <section class="contenedor travesias-america" id="travesias-america" aria-labelledby="titulo-travesias-america">
     <div class="prosa">
-      <h2 id="travesias-america">Las travesías por América</h2>
+      <h2 id="titulo-travesias-america">Las travesías por América</h2>
       <p><strong>Las travesías son viajes poéticos por América que realiza anualmente la e[ad] Escuela de Arquitectura y Diseño de la Pontificia Universidad Católica de Valparaíso a partir del año 1984.</strong> Estos viajes son integrados por alumnos y profesores de Arquitectura y Diseño. En las travesías se realizan obras desde la creatividad del oficio.</p>
       <p><a href="https://wiki.ead.pucv.cl/Categor%C3%ADa:Traves%C3%ADa">Revisa aquí otras travesías realizadas por la e[ad] desde 1984 ↗</a></p>
+      <p class="fuentes">Texto de e[ad] PUCV y colaboradores de Wiki Casiopea · <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>.</p>
     </div>
     <figure class="mapa mapa-historico">
       <iframe
@@ -50,9 +62,10 @@
     </figure>
   </section>
 
+  <!-- El fondo crema señala el comienzo del relato específico de Chaitén. -->
   <div class="relato">
-    <section class="contenedor chaiten" aria-labelledby="travesia-2026">
-      <h2 class="titulo-travesia" id="travesia-2026">TRAVESÍA 2026</h2>
+    <section class="contenedor chaiten" id="travesia-2026" aria-labelledby="titulo-travesia-2026">
+      <h2 class="titulo-travesia" id="titulo-travesia-2026">TRAVESÍA 2026</h2>
       <section class="participan" aria-labelledby="talleres">
         <h3 id="talleres">Talleres participantes</h3>
         <ul class="talleres">
@@ -86,6 +99,7 @@
       </div>
     </section>
 
+    <!-- EL LUGAR. Edita aquí los textos, las imágenes y el carrusel. -->
     <section class="contenedor lugar" id="lugar" aria-labelledby="titulo-lugar">
       <h2 id="titulo-lugar">El lugar</h2>
       <figure class="galeria-historica" data-galeria-historica>
@@ -128,99 +142,91 @@
       <p class="fuentes">Fuentes <a href="https://www.memoriachilena.gob.cl/602/w3-article-92768.html">Memoria Chilena</a> · <a href="https://documentos.minvu.cl/regionX/seremi/resoluciones_exentas/Documentos/RESOLUCION%20EXENTA%2093%2009.08.2018%20USO%20DE%20SUELOS%20CHAITEN.pdf">MINVU, estudio de Chaitén urbano</a>.</p>
     </section>
 
-    <section class="contenedor obra" id="travesia" aria-labelledby="titulo-obra">
-      <div class="obra-cabecera">
-        <h2 id="titulo-obra">La obra</h2>
-        <button class="indice-control" type="button" aria-controls="indice-faenas" aria-expanded="true" aria-label="Contraer índice de faenas" hidden>
-          <span aria-hidden="true"></span>
-        </button>
-        <nav class="indice-faenas" id="indice-faenas" aria-label="Faenas de la obra">
-          <ol class="timeline">
-            <li><a data-enlace-faena href="#faena-fundamento" aria-label="Fundamento"><span>Fundamento</span></a></li>
-            <li><a data-enlace-faena href="#faena-trazado" aria-label="Reconocimiento y trazado"><span class="faena-larga">Reconocimiento y trazado</span><span class="faena-corta" aria-hidden="true">Trazado</span></a></li>
-            <li><a data-enlace-faena href="#faena-preparacion" aria-label="Preparación del lugar y materiales"><span class="faena-larga">Preparación del lugar y materiales</span><span class="faena-corta" aria-hidden="true">Preparación</span></a></li>
-            <li><a data-enlace-faena href="#faena-montaje" aria-label="Montaje"><span>Montaje</span></a></li>
-            <li><a data-enlace-faena href="#faena-ajustes" aria-label="Ajustes y terminaciones"><span class="faena-larga">Ajustes y terminaciones</span><span class="faena-corta" aria-hidden="true">Ajustes</span></a></li>
-          </ol>
-        </nav>
-      </div>
-
-      <p class="aviso">Fundamento, faenas e imágenes provisorias para la maqueta.</p>
-
-      <article class="faena" id="faena-fundamento" data-faena aria-labelledby="titulo-fundamento" tabindex="-1">
-        <h3 id="titulo-fundamento">Fundamento</h3>
-        <p>Una obra de travesía nace de una pregunta que el taller hace al lugar. El fundamento reúne esa pregunta, las observaciones que llevaron a formularla y la primera decisión que orienta el trabajo.</p>
-        <p>La vista de conjunto sirve para relacionar esa decisión inicial con el sitio y con las faenas que se presentan en el índice.</p>
-        <figure>
-          <img src="assets/registro-3.svg" width="1200" height="750" alt="" loading="lazy">
-          <figcaption><strong>Vista de conjunto de la obra.</strong> Imagen provisoria · Fecha y autoría por incorporar.</figcaption>
-        </figure>
-        <nav class="paso" aria-label="Continuar desde Fundamento">
-          <a href="#faena-trazado">Seguir a Reconocimiento y trazado →</a>
-        </nav>
-      </article>
-
-      <article class="faena" id="faena-trazado" data-faena aria-labelledby="titulo-trazado" tabindex="-1">
-        <h3 id="titulo-trazado">Reconocimiento y trazado</h3>
-        <p>Un croquis de trazado puede dejar a la vista las referencias desde las que se comienza a trabajar. Una nota al margen reúne las dudas que todavía debían comprobarse en el lugar.</p>
-        <figure>
-          <img src="assets/registro-4.svg" width="1200" height="750" alt="" loading="lazy">
-          <figcaption><strong>Referencias del trazado.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
-        </figure>
-        <nav class="paso" aria-label="Continuar desde Reconocimiento y trazado">
-          <a href="#faena-fundamento">← Volver a Fundamento</a>
-          <a href="#faena-preparacion">Seguir a Preparación del lugar y materiales →</a>
-        </nav>
-      </article>
-
-      <article class="faena" id="faena-preparacion" data-faena aria-labelledby="titulo-preparacion" tabindex="-1">
-        <h3 id="titulo-preparacion">Preparación del lugar y materiales</h3>
-        <p>En una jornada de preparación, las notas pueden registrar cómo se dispuso el área de trabajo y qué materiales quedaron listos para la siguiente tarea. El audio permite sumar la voz de quien participó en esa decisión.</p>
-        <figure class="registro"><figcaption><strong>Voces de la preparación</strong> · Audio</figcaption><p>Registro por incorporar.</p></figure>
-        <nav class="paso" aria-label="Continuar desde Preparación del lugar y materiales">
-          <a href="#faena-trazado">← Volver a Reconocimiento y trazado</a>
-          <a href="#faena-montaje">Seguir a Montaje →</a>
-        </nav>
-      </article>
-
-      <article class="faena" id="faena-montaje" data-faena aria-labelledby="titulo-montaje" tabindex="-1">
-        <h3 id="titulo-montaje">Montaje</h3>
-        <p>Una secuencia de imágenes puede seguir una pieza desde su posición inicial hasta el momento en que se integra al conjunto. Entre dos tomas se vuelve visible el orden del trabajo.</p>
-        <figure>
-          <img src="assets/registro-5.svg" width="1200" height="750" alt="" loading="lazy">
-          <figcaption><strong>Momento de montaje.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
-        </figure>
-        <div class="registros">
-          <figure><figcaption><strong>Una tarea del montaje</strong> · Video</figcaption><p>Registro por incorporar.</p></figure>
-          <figure><figcaption><strong>Secuencia de montaje</strong> · GIF</figcaption><p>Registro por incorporar.</p></figure>
-        </div>
-        <nav class="paso" aria-label="Continuar desde Montaje">
-          <a href="#faena-preparacion">← Volver a Preparación del lugar y materiales</a>
-          <a href="#faena-ajustes">Seguir a Ajustes y terminaciones →</a>
-        </nav>
-      </article>
-
-      <article class="faena" id="faena-ajustes" data-faena aria-labelledby="titulo-ajustes" tabindex="-1">
-        <h3 id="titulo-ajustes">Ajustes y terminaciones</h3>
-        <p>Un registro de detalle permite mostrar qué se revisó al final y por qué. El pie puede indicar qué parte de la obra se está mirando y desde dónde se tomó la imagen.</p>
-        <figure>
-          <img src="assets/registro-6.svg" width="1200" height="750" alt="" loading="lazy">
-          <figcaption><strong>Vista para el registro final.</strong> Imagen provisoria · Fecha y autoría por incorporar.</figcaption>
-        </figure>
-        <nav class="paso" aria-label="Continuar desde Ajustes y terminaciones">
-          <a href="#faena-montaje">← Volver a Montaje</a>
-          <a href="#travesia">↑ Volver al índice de La obra</a>
-        </nav>
-      </article>
-    </section>
-
   </div>
+
+  <!-- OBRA. Las cinco faenas se leen seguidas; conserva sus id al editar los textos. -->
+  <section class="obra" id="travesia" aria-labelledby="titulo-obra">
+    <div class="contenedor">
+      <h2 id="titulo-obra">La obra</h2>
+      <div class="obra-layout">
+        <!-- Índice fijo al lado del contenido. Hover, teclado o toque abren los títulos. -->
+        <aside class="riel-faenas">
+          <nav class="indice-vertical" aria-label="Faenas de la obra">
+            <button class="indice-control" type="button" aria-label="Mostrar títulos de las faenas" aria-expanded="false" aria-controls="lista-faenas" hidden>
+              <span aria-hidden="true">+</span>
+            </button>
+            <ol class="lista-faenas" id="lista-faenas">
+              <li><a href="#faena-fundamento" aria-label="Fundamento"><span>Fundamento</span></a></li>
+              <li><a href="#faena-trazado" aria-label="Reconocimiento y trazado"><span>Reconocimiento y trazado</span></a></li>
+              <li><a href="#faena-preparacion" aria-label="Preparación del lugar y materiales"><span>Preparación del lugar y materiales</span></a></li>
+              <li><a href="#faena-montaje" aria-label="Montaje"><span>Montaje</span></a></li>
+              <li><a href="#faena-ajustes" aria-label="Ajustes y terminaciones"><span>Ajustes y terminaciones</span></a></li>
+            </ol>
+          </nav>
+        </aside>
+        <div class="faenas">
+          <p class="aviso">Fundamento, faenas e imágenes provisorias para la maqueta.</p>
+
+          <article class="faena" id="faena-fundamento" data-faena aria-labelledby="titulo-fundamento">
+            <h3 id="titulo-fundamento">Fundamento</h3>
+            <p>Una obra de travesía nace de una pregunta que el taller hace al lugar. El fundamento reúne esa pregunta, las observaciones que llevaron a formularla y la primera decisión que orienta el trabajo.</p>
+            <p>La vista de conjunto sirve para relacionar esa decisión inicial con el sitio y con las faenas que se presentan en el índice.</p>
+            <figure>
+              <img src="assets/registro-3.svg" width="1200" height="750" alt="" loading="lazy">
+              <figcaption><strong>Vista de conjunto de la obra.</strong> Imagen provisoria · Fecha y autoría por incorporar.</figcaption>
+            </figure>
+          </article>
+
+          <article class="faena" id="faena-trazado" data-faena aria-labelledby="titulo-trazado">
+            <h3 id="titulo-trazado">Reconocimiento y trazado</h3>
+            <p>Un croquis de trazado puede dejar a la vista las referencias desde las que se comienza a trabajar. Una nota al margen reúne las dudas que todavía debían comprobarse en el lugar.</p>
+            <figure>
+              <img src="assets/registro-4.svg" width="1200" height="750" alt="" loading="lazy">
+              <figcaption><strong>Referencias del trazado.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
+            </figure>
+          </article>
+
+          <article class="faena" id="faena-preparacion" data-faena aria-labelledby="titulo-preparacion">
+            <h3 id="titulo-preparacion">Preparación del lugar y materiales</h3>
+            <p>En una jornada de preparación, las notas pueden registrar cómo se dispuso el área de trabajo y qué materiales quedaron listos para la siguiente tarea. El audio permite sumar la voz de quien participó en esa decisión.</p>
+            <figure class="registro"><figcaption><strong>Voces de la preparación</strong> · Audio</figcaption><p>Registro por incorporar.</p></figure>
+          </article>
+
+          <article class="faena" id="faena-montaje" data-faena aria-labelledby="titulo-montaje">
+            <h3 id="titulo-montaje">Montaje</h3>
+            <p>Una secuencia de imágenes puede seguir una pieza desde su posición inicial hasta el momento en que se integra al conjunto. Entre dos tomas se vuelve visible el orden del trabajo.</p>
+            <figure>
+              <img src="assets/registro-5.svg" width="1200" height="750" alt="" loading="lazy">
+              <figcaption><strong>Momento de montaje.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
+            </figure>
+            <div class="registros">
+              <figure><figcaption><strong>Una tarea del montaje</strong> · Video</figcaption><p>Registro por incorporar.</p></figure>
+              <figure><figcaption><strong>Secuencia de montaje</strong> · GIF</figcaption><p>Registro por incorporar.</p></figure>
+            </div>
+          </article>
+
+          <article class="faena" id="faena-ajustes" data-faena aria-labelledby="titulo-ajustes">
+            <h3 id="titulo-ajustes">Ajustes y terminaciones</h3>
+            <p>Un registro de detalle permite mostrar qué se revisó al final y por qué. El pie puede indicar qué parte de la obra se está mirando y desde dónde se tomó la imagen.</p>
+            <figure>
+              <img src="assets/registro-6.svg" width="1200" height="750" alt="" loading="lazy">
+              <figcaption><strong>Vista para el registro final.</strong> Imagen provisoria · Fecha y autoría por incorporar.</figcaption>
+            </figure>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
 </main>
-<footer class="pie" id="derechos">
-  <div class="contenedor">
-    <h2>Créditos y derechos</h2>
-    <p>El texto introductorio sobre las travesías se atribuye a la <a href="https://wiki.ead.pucv.cl/Categor%C3%ADa:Traves%C3%ADa">e[ad] PUCV y a sus colaboradores en Wiki Casiopea</a>. La <a href="https://wiki.ead.pucv.cl/Casiopea:Derechos_de_autor">licencia general de la wiki</a> es <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.es">CC BY-SA 4.0</a>, salvo materiales con condiciones propias. El mapa histórico se muestra desde su <a href="https://herbertspencer.net/travesias-casiopea/">publicación original</a>. El mapa local usa datos de <a href="https://www.openstreetmap.org/copyright">OpenStreetMap y sus colaboradores</a>.</p>
-    <p>Créditos provisorios de la Travesía Chaitén 2026. Los textos, fotografías y demás registros conservarán la autoría y las condiciones de uso de cada material. Los créditos individuales se incorporarán al publicar los registros definitivos.</p>
+
+<!-- PIE. Mantén aquí los nombres y los enlaces de los dos talleres. -->
+<footer class="pie">
+  <div class="contenedor pie-fila">
+    <p class="identidad"><strong>e[ad]</strong> <span>Escuela de Arquitectura y Diseño</span></p>
+    <nav class="pie-talleres" aria-label="Talleres participantes">
+      <a href="https://wiki.ead.pucv.cl/Taller_Habitabilidad_en_Infraestructura_Urbana_S2_2026">Taller Habitabilidad en Infraestructura Urbana S2 2026</a>
+      <a href="https://wiki.ead.pucv.cl/Taller_Dise%C3%B1o_de_Ediciones_Digitales_2026">Taller Diseño de Ediciones Digitales 2026</a>
+    </nav>
   </div>
 </footer>
 </body>
