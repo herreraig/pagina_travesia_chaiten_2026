@@ -1,52 +1,88 @@
-const etapas = Array.from(document.querySelectorAll("[data-etapa]"));
-const enlacesEtapa = document.querySelectorAll("[data-enlace-etapa]");
-const recorrido = document.getElementById("travesia");
+const obra = document.querySelector(".obra");
+const faenas = Array.from(obra.querySelectorAll("[data-faena]"));
+const enlaces = Array.from(obra.querySelectorAll("[data-enlace-faena]"));
+const indice = obra.querySelector(".indice-faenas");
+const linea = indice.querySelector(".timeline");
+const control = obra.querySelector(".indice-control");
 
-function mostrarEtapa() {
-  const destino = document.getElementById(location.hash.slice(1));
-  const etapa = destino?.closest("[data-etapa]") ?? etapas[0];
-  const enlaceActual = Array.from(enlacesEtapa).find(enlace => enlace.hash === "#" + etapa.id);
-  const foco = document.activeElement;
+linea.style.setProperty("--total-faenas", enlaces.length);
+obra.setAttribute("data-interactiva", "");
+control.hidden = false;
 
-  for (const panel of etapas) {
-    panel.hidden = panel !== etapa;
+function abrirIndice(abierto) {
+  if (!abierto && indice.contains(document.activeElement)) {
+    control.focus({ preventScroll: true });
   }
-  for (const enlace of enlacesEtapa) {
-    if (enlace === enlaceActual) {
-      enlace.setAttribute("aria-current", "location");
-    } else {
-      enlace.removeAttribute("aria-current");
-    }
-  }
-
-  if (foco?.closest("[data-etapa]")?.hidden) {
-    enlaceActual.focus({ preventScroll: true });
-  }
-  if (destino && destino === etapa) {
-    recorrido.scrollIntoView();
-  } else if (destino?.closest("[data-etapa]")) {
-    destino.scrollIntoView();
-  }
+  indice.hidden = !abierto;
+  control.setAttribute("aria-expanded", String(abierto));
+  control.setAttribute("aria-label", abierto ? "Contraer índice de faenas" : "Desplegar índice de faenas");
 }
 
-window.addEventListener("hashchange", mostrarEtapa);
-mostrarEtapa();
+control.addEventListener("click", () => abrirIndice(indice.hidden));
 
-const galeriaHistorica = document.querySelector("[data-galeria-historica]");
+let sobrepasado;
+function ajustarIndiceAlDesplazamiento() {
+  const sigueBajando = obra.getBoundingClientRect().top < -105;
+  if (sigueBajando !== sobrepasado) {
+    sobrepasado = sigueBajando;
+    abrirIndice(!sobrepasado);
+  }
+}
+window.addEventListener("scroll", ajustarIndiceAlDesplazamiento, { passive: true });
 
-if (galeriaHistorica) {
-  const grupo = galeriaHistorica.querySelector(".galeria-grupo");
-  const pista = galeriaHistorica.querySelector(".galeria-pista");
-  const control = galeriaHistorica.querySelector(".galeria-control");
-  const copia = grupo.cloneNode(true);
+function elegirFaena(origen) {
+  const i = enlaces.findIndex(enlace => enlace.hash === location.hash);
+  const seleccion = Math.max(0, i);
+  const focoSalida = document.activeElement?.closest("[data-faena]");
 
+  faenas.forEach((faena, n) => { faena.hidden = n !== seleccion; });
+  enlaces.forEach((enlace, n) => {
+    if (n === seleccion) enlace.setAttribute("aria-current", "location");
+    else enlace.removeAttribute("aria-current");
+  });
+  linea.style.setProperty("--marcador", ((seleccion + .5) / enlaces.length * 100) + "%");
+
+  if (focoSalida?.hidden || origen === "contenido") {
+    faenas[seleccion].focus({ preventScroll: true });
+  }
+  if (i !== -1 && (origen !== "indice" || sobrepasado)) {
+    obra.scrollIntoView();
+  }
+  ajustarIndiceAlDesplazamiento();
+}
+
+obra.addEventListener("click", event => {
+  const enlace = event.target.closest('a[href^="#faena-"]');
+  if (!enlace || event.defaultPrevented || event.button !== 0 ||
+      event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+  event.preventDefault();
+  if (location.hash !== enlace.hash) history.pushState(null, "", enlace.hash);
+  elegirFaena(indice.contains(enlace) ? "indice" : "contenido");
+});
+window.addEventListener("hashchange", () => elegirFaena("historial"));
+elegirFaena("carga");
+requestAnimationFrame(() => obra.setAttribute("data-marcador-listo", ""));
+
+const galeria = document.querySelector("[data-galeria-historica]");
+if (galeria && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const ventana = galeria.querySelector(".galeria-ventana");
+  const pista = galeria.querySelector(".galeria-pista");
+  const copia = pista.querySelector(".galeria-grupo").cloneNode(true);
   copia.setAttribute("aria-hidden", "true");
   pista.append(copia);
-  galeriaHistorica.setAttribute("data-animada", "");
-  control.hidden = false;
+  galeria.setAttribute("data-animada", "");
+  ventana.setAttribute("role", "button");
+  ventana.setAttribute("aria-label", "Pausar o reanudar la galería de El lugar");
+  ventana.setAttribute("aria-pressed", "false");
 
-  control.addEventListener("click", () => {
-    const pausada = galeriaHistorica.toggleAttribute("data-pausada");
-    control.textContent = pausada ? "Reanudar galería" : "Pausar galería";
+  function alternarGaleria() {
+    ventana.setAttribute("aria-pressed", String(galeria.toggleAttribute("data-pausada")));
+  }
+  ventana.addEventListener("click", alternarGaleria);
+  ventana.addEventListener("keydown", event => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    event.preventDefault();
+    alternarGaleria();
   });
 }

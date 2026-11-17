@@ -1,26 +1,26 @@
-# Travesía a Chaitén 2026
+# Travesía Chaitén 2026
 
 ## Abrir y publicar
 
-1. Extrae el ZIP. Copia **su contenido** dentro de tu repositorio `pagina_travesia_chaiten_2026`. El archivo `index.html` va al lado de tu `README.md`.
-2. Si ya instalaste la versión anterior, reemplaza `index.html`, `styles.css` y `recorrido.js`. Después puedes quitar `observacion.html`, `obra.html` y `acto.html`, porque sus tres secciones ahora están reunidas en `index.html`. Guarda antes cualquier edición tuya que quieras reincorporar.
-3. Abre `index.html` en el navegador, sin instalar extensiones. Prueba el desplazamiento de la galería, las tres etapas y las faenas. El mapa y la tipografía web se cargan con internet.
-4. En GitHub Desktop, haz **Commit to main → Push origin**. Si Pages ya publica desde `main`, comprueba el resultado con **Settings → Pages → Visit site**.
+1. Extrae el ZIP y copia **su contenido** dentro de tu repositorio `pagina_travesia_chaiten_2026`. `index.html` va al lado de tu `README.md`. Acepta reemplazar los archivos de la versión anterior y copia también todo lo que trae `assets/`.
+2. Abre `index.html` en el navegador. Baja hasta **La obra**, elige una faena y vuelve a abrir el índice con la flecha cuando se contraiga.
+3. Cuando estés conforme, en GitHub Desktop haz **Commit to main → Push origin**. Revisa la versión publicada en **Settings → Pages → Visit site**. Los mapas y la tipografía web necesitan conexión.
 
-## Editar la bitácora
+## Editar la página en VS Code
 
-- En `index.html` están la portada, el mapa, la galería histórica, los talleres, el índice y las tres etapas. Busca los comentarios `OBSERVACIÓN`, `OBRA` y `ACTO` para llegar a cada una.
-- En `styles.css` están el color, la tipografía y la distribución. En `recorrido.js` está la selección de la etapa visible.
-- Para cambiar las imágenes históricas, edita la lista de `<img>` dentro de `.galeria-grupo` en `index.html`. El carrusel repite esa lista automáticamente.
-- Los seis SVG de `assets/` son ejemplos del proyecto anterior. Los relatos y nombres de faenas de esta plantilla son ilustrativos. Al incorporar material real, reemplaza los pies genéricos por fecha, lugar, autoría y una frase sobre qué permite ver el registro.
-- Cada faena tiene un identificador. Por ejemplo, el enlace `href="#faena-montaje"` de la sub-barra va a la sección `id="faena-montaje"`. También puedes compartir la URL publicada terminada en `#faena-montaje` para abrirla directamente.
-- Guarda con **Ctrl+S** y recarga el navegador.
+- **Portada.** El título está en `index.html`. Para usar otra imagen de fondo, cambia la ruta de `.portada::before` en `styles.css`. La imagen provisoria actual está en `assets/portada-provisoria.svg` y su opacidad es `.6`.
+- **Las travesías por América.** En `index.html` está el mapa histórico incrustado desde el enlace que usa Casiopea. Su selector de años forma parte de esa visualización.
+- **El lugar.** Reemplaza los seis `<img>` dentro de `.galeria-grupo` en `index.html`. El carrusel repite esa lista automáticamente. Para pausarlo, toca directamente la tira de imágenes o sitúa el puntero sobre ella.
+- **La obra.** Cada enlace `data-enlace-faena` apunta a un bloque `data-faena` con el mismo identificador y en el mismo orden. Si cambias un nombre, edítalo en el índice, en el título de la faena y en los enlaces de la faena anterior y siguiente. Conserva el identificador si quieres que sigan funcionando los enlaces compartidos. Por ejemplo, añade `#faena-montaje` al final de la URL para abrir Montaje.
+- **Créditos y derechos.** Actualiza el pie al incorporar registros reales. Completa el nombre de cada autor, las fuentes y las condiciones de uso que correspondan.
+
+Guarda con **Ctrl+S** y recarga el navegador.
 
 ## Copiables para los registros reales
 
 ### Foto o croquis
 
-Copia el archivo a `assets/` y reemplaza uno de los bloques `<figure>` dentro de la galería. Usa una descripción breve en `alt` y el crédito en el pie.
+Copia el archivo a `assets/` y reemplaza uno de los bloques `<figure>` dentro de una faena o de El lugar. Usa una descripción breve en `alt` y el crédito en el pie.
 
 ```html
 <figure>
