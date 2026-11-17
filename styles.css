@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f2ea;
+  color: #202a26;
+  font: 1rem/1.6 "Segoe UI", sans-serif;
+}
+
+.contenedor {
+  max-width: 64rem;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.portada {
+  background: #143d34;
+  color: #fffaf1;
+  padding-block: clamp(3rem, 10vw, 7rem);
+}
+
+h1 {
+  margin: 0;
+  font: 500 clamp(2.75rem, 8vw, 6rem)/1.05 Georgia, serif;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+nav a {
+  color: inherit;
+  text-underline-offset: 0.25em;
+}
+
+section {
+  padding-block: 2rem;
+  border-bottom: 1px solid #cbc9bf;
+}
