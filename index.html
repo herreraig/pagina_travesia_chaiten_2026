@@ -3,31 +3,254 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Travesía a Chaitén 2026</title>
+  <meta name="theme-color" content="#fcfbf7">
+  <meta name="description" content="Bitácora de la Travesía a Chaitén 2026 de los talleres de Arquitectura y Diseño de la e[ad] PUCV.">
+  <title>TRAVESÍA CHAITÉN 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=Roboto+Serif:ital,wght@1,400&amp;display=swap">
   <link rel="stylesheet" href="styles.css">
+  <script src="recorrido.js" defer></script>
 </head>
 <body>
-  <header class="portada">
-    <div class="contenedor">
-      <p>Escuela de Arquitectura y Diseño · PUCV</p>
-      <h1>Travesía a Chaitén</h1>
-      <p>Bitácora del taller · 2026</p>
-      <nav aria-label="Secciones de la página">
-        <a href="#bitacora">Bitácora</a>
-        <a href="#obra">Obra</a>
+<a class="saltar" href="#contenido">Saltar al contenido</a>
+<header class="cabecera">
+  <div class="contenedor cabecera-fila">
+    <a class="marca" href="#inicio">Travesía Chaitén 2026</a>
+    <nav class="menu" aria-label="Navegación principal">
+      <a href="#inicio">Inicio</a>
+      <a href="#travesia">Travesía</a>
+    </nav>
+  </div>
+</header>
+<main id="contenido">
+  <section class="portada" id="inicio" aria-labelledby="titulo">
+    <div class="contenedor portada-centro">
+      <p class="identidad"><strong>e[ad]</strong> <span>Escuela de Arquitectura y Diseño</span></p>
+      <h1 id="titulo">TRAVESÍA CHAITÉN 2026</h1>
+    </div>
+  </section>
+
+  <section class="contenedor travesias-america" aria-labelledby="travesias-america">
+    <div class="prosa">
+      <h2 id="travesias-america">Las travesías por América</h2>
+      <p><strong>Las travesías son viajes poéticos por América que realiza anualmente la e[ad] Escuela de Arquitectura y Diseño de la Pontificia Universidad Católica de Valparaíso a partir del año 1984.</strong> Estos viajes son integrados por alumnos y profesores de Arquitectura y Diseño. En las travesías se realizan obras desde la creatividad del oficio.</p>
+      <p><a href="https://wiki.ead.pucv.cl/Categor%C3%ADa:Traves%C3%ADa">Revisa aquí otras travesías realizadas por la e[ad] desde 1984 ↗</a></p>
+    </div>
+    <figure class="galeria-historica" data-galeria-historica>
+      <div class="galeria-ventana" role="region" aria-label="Selección de imágenes provisorias" tabindex="0">
+        <div class="galeria-pista">
+          <div class="galeria-grupo">
+              <img src="assets/registro-1.svg" width="1200" height="750" alt="" loading="lazy">
+              <img src="assets/registro-2.svg" width="1200" height="750" alt="" loading="lazy">
+              <img src="assets/registro-3.svg" width="1200" height="750" alt="" loading="lazy">
+              <img src="assets/registro-4.svg" width="1200" height="750" alt="" loading="lazy">
+              <img src="assets/registro-5.svg" width="1200" height="750" alt="" loading="lazy">
+              <img src="assets/registro-6.svg" width="1200" height="750" alt="" loading="lazy">
+          </div>
+        </div>
+      </div>
+      <figcaption>
+        <span>Travesías anteriores · Imágenes provisorias</span>
+        <button type="button" class="galeria-control" hidden>Pausar galería</button>
+      </figcaption>
+    </figure>
+  </section>
+
+  <section class="contenedor chaiten" aria-labelledby="chaiten-2026">
+    <div class="chaiten-contexto">
+      <div>
+        <h2 id="chaiten-2026">CHAITÉN 2026</h2>
+        <p class="bajada">Dos talleres de Arquitectura y Diseño se encuentran en Chaitén, en la Región de Los Lagos. Esta bitácora acompaña la preparación del viaje, el trabajo en terreno y el momento de compartir la obra.</p>
+      </div>
+      <figure class="mapa">
+          <iframe
+            title="Mapa de Chaitén con un marcador en la plaza de la ciudad"
+            loading="lazy"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=-72.7700%2C-42.9480%2C-72.6640%2C-42.8850&amp;layer=mapnik&amp;marker=-42.91656%2C-72.70845">
+          </iframe>
+          <figcaption>
+            <span><strong>Chaitén</strong> · Región de Los Lagos</span>
+            <a href="https://www.openstreetmap.org/?mlat=-42.91656&amp;mlon=-72.70845#map=13/-42.91656/-72.70845">Abrir en OpenStreetMap</a>
+            <a href="https://www.openstreetmap.org/copyright">© Colaboradores de OpenStreetMap</a>
+          </figcaption>
+        </figure>
+    </div>
+    <section class="participan" aria-labelledby="talleres">
+      <h3 id="talleres">Talleres participantes</h3>
+      <ul class="talleres">
+        <li>
+          <small>Arquitectura</small>
+          <a href="https://wiki.ead.pucv.cl/Taller_Habitabilidad_en_Infraestructura_Urbana_S2_2026">Taller Habitabilidad en Infraestructura Urbana S2 2026</a>
+          <small>Profesores: Argeo Ramella y Francisca Oñate</small>
+        </li>
+        <li>
+          <small>Diseño</small>
+          <a href="https://wiki.ead.pucv.cl/Taller_Dise%C3%B1o_de_Ediciones_Digitales_2026">Taller Diseño de Ediciones Digitales 2026</a>
+          <small>Profesora: Michèle Wilkomirsky</small>
+        </li>
+      </ul>
+    </section>
+  </section>
+
+  <section class="contenedor recorrido" id="travesia" aria-labelledby="titulo-travesia">
+    <div class="recorrido-cabecera">
+      <h2 id="titulo-travesia" class="regla">La travesía</h2>
+      <nav class="indice" aria-label="Etapas de la travesía">
+        <ol class="timeline">
+          <li><a href="#observacion" data-enlace-etapa><strong>Observación</strong><span>Antes de partir</span></a></li>
+          <li><a href="#obra" class="eje" data-enlace-etapa><strong>Obra</strong><span>Trabajo en terreno</span></a></li>
+          <li><a href="#acto" data-enlace-etapa><strong>Acto</strong><span>Cierre y encuentro</span></a></li>
+        </ol>
       </nav>
     </div>
-  </header>
 
-  <main class="contenedor">
-    <section id="bitacora">
-      <h2>Bitácora</h2>
-      <p>Aquí reuniremos observaciones, croquis y fotografías del viaje.</p>
-    </section>
-    <section id="obra">
-      <h2>Obra</h2>
-      <p>Aquí documentaremos las faenas y el proceso de construcción.</p>
-    </section>
-  </main>
+    <p class="aviso">Maqueta de la bitácora. Los relatos, las faenas y las imágenes de esta versión son ejemplos para probar el recorrido.</p>
+
+    <!-- OBSERVACIÓN -->
+    <article class="etapa" id="observacion" data-etapa aria-labelledby="titulo-observacion">
+      <header class="etapa-cabecera">
+        <h3 id="titulo-observacion" class="titulo-etapa">Observación</h3>
+        <p class="bajada">Antes de partir, mapas, croquis y notas ayudan a formular las preguntas que el taller llevará a Chaitén.</p>
+      </header>
+      <section class="bloque" aria-labelledby="observacion-lugar">
+        <h4 id="observacion-lugar">El lugar</h4>
+        <p>Un primer croquis puede reunir el borde, los recorridos y las referencias que permiten ubicar el lugar de trabajo. Sobre esa hoja se distinguen las preguntas que podrán retomarse una vez en terreno.</p>
+        <div class="galeria">
+          <figure>
+            <img src="assets/registro-1.svg" width="1200" height="750" alt="" loading="lazy">
+            <figcaption><strong>Primera lectura del lugar.</strong> Croquis de ejemplo · Fecha y autoría por incorporar.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/registro-2.svg" width="1200" height="750" alt="" loading="lazy">
+            <figcaption><strong>Puntos para volver a mirar.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="bloque" aria-labelledby="observacion-proceso">
+        <h4 id="observacion-proceso">El proceso</h4>
+        <p>La preparación reúne materiales, tareas y dudas. Una anotación fechada puede mostrar por qué se eligió mirar un punto del lugar y qué quedó pendiente de comprobar al llegar.</p>
+        <div class="registros">
+          <figure><figcaption><strong>Recorrido previo</strong> · Video</figcaption><p>Registro por incorporar.</p></figure>
+          <figure><figcaption><strong>Lectura de un apunte</strong> · Audio</figcaption><p>Registro por incorporar.</p></figure>
+          <figure><figcaption><strong>De un croquis al siguiente</strong> · GIF</figcaption><p>Registro por incorporar.</p></figure>
+        </div>
+      </section>
+      <nav class="paso" aria-label="Continuar desde Observación"><a href="#obra">Seguir a Obra →</a></nav>
+    </article>
+
+    <!-- OBRA -->
+    <article class="etapa" id="obra" data-etapa aria-labelledby="titulo-obra">
+      <nav class="subindice" aria-labelledby="indice-faenas">
+        <h3 id="indice-faenas">Faenas de la obra</h3>
+        <ul>
+          <li><a href="#faena-trazado">Reconocimiento y trazado</a></li>
+          <li><a href="#faena-preparacion">Preparación del lugar y materiales</a></li>
+          <li><a href="#faena-montaje">Montaje</a></li>
+          <li><a href="#faena-ajustes">Ajustes y terminaciones</a></li>
+        </ul>
+      </nav>
+      <header class="etapa-cabecera">
+        <h3 id="titulo-obra" class="titulo-etapa">Obra</h3>
+        <p class="bajada">¿Cómo toma forma una obra al encontrarse con un lugar? La vista de conjunto permite reconocer dónde se trabaja y relacionar cada faena con el proceso completo.</p>
+      </header>
+      <figure class="vista-obra">
+        <img src="assets/registro-3.svg" width="1200" height="750" alt="" loading="lazy">
+        <figcaption><strong>Vista de conjunto de la obra.</strong> Imagen de ejemplo · Chaitén · Fecha y autoría por incorporar.</figcaption>
+      </figure>
+      <section class="bloque" aria-labelledby="obra-lugar">
+        <h4 id="obra-lugar">El lugar</h4>
+        <p>La vista general puede mostrar la relación entre el área de trabajo, los accesos y el suelo. Un croquis tomado desde otro punto permite precisar qué condición del lugar orientó una decisión de proyecto.</p>
+      </section>
+      <section class="bloque" aria-labelledby="obra-proceso">
+        <h4 id="obra-proceso">El proceso</h4>
+        <p>Comparar el primer trazado con una imagen del montaje permite seguir un ajuste que, en una fotografía final, podría pasar inadvertido. El orden de las faenas ayuda a ver en qué momento se hizo necesario.</p>
+      </section>
+      <section class="bloque agrupacion" aria-labelledby="obra-faenas">
+        <h4 id="obra-faenas">Las faenas</h4>
+        <section class="faena" id="faena-trazado" aria-labelledby="titulo-trazado">
+          <h5 id="titulo-trazado">Reconocimiento y trazado</h5>
+          <p>Un croquis de trazado puede dejar a la vista las referencias desde las que se comienza a trabajar. Una nota al margen reúne las dudas que todavía debían comprobarse en el lugar.</p>
+          <figure>
+            <img src="assets/registro-4.svg" width="1200" height="750" alt="" loading="lazy">
+            <figcaption><strong>Referencias del trazado.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
+          </figure>
+        </section>
+        <section class="faena" id="faena-preparacion" aria-labelledby="titulo-preparacion">
+          <h5 id="titulo-preparacion">Preparación del lugar y materiales</h5>
+          <p>En una jornada de preparación, las notas pueden registrar cómo se dispuso el área de trabajo y qué materiales quedaron listos para la siguiente tarea. El audio permite sumar la voz de quien participó en esa decisión.</p>
+          <figure class="registro"><figcaption><strong>Voces de la preparación</strong> · Audio</figcaption><p>Registro por incorporar.</p></figure>
+        </section>
+        <section class="faena" id="faena-montaje" aria-labelledby="titulo-montaje">
+          <h5 id="titulo-montaje">Montaje</h5>
+          <p>Una secuencia de imágenes puede seguir una pieza desde su posición inicial hasta el momento en que se integra al conjunto. Entre dos tomas se vuelve visible el orden del trabajo.</p>
+          <figure>
+            <img src="assets/registro-5.svg" width="1200" height="750" alt="" loading="lazy">
+            <figcaption><strong>Momento de montaje.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
+          </figure>
+          <div class="registros">
+            <figure><figcaption><strong>Una tarea del montaje</strong> · Video</figcaption><p>Registro por incorporar.</p></figure>
+            <figure><figcaption><strong>Secuencia de montaje</strong> · GIF</figcaption><p>Registro por incorporar.</p></figure>
+          </div>
+        </section>
+        <section class="faena" id="faena-ajustes" aria-labelledby="titulo-ajustes">
+          <h5 id="titulo-ajustes">Ajustes y terminaciones</h5>
+          <p>Un registro de detalle permite mostrar qué se revisó al final y por qué. El pie puede indicar qué parte de la obra se está mirando y desde dónde se tomó la imagen.</p>
+        </section>
+      </section>
+      <section class="bloque" aria-labelledby="obra-resultado">
+        <h4 id="obra-resultado">La obra terminada</h4>
+        <p>Una vista desde el acceso y otra desde el área de trabajo permitirán comparar la obra construida con el trazado inicial. El encuentro en torno a la obra queda registrado en <a href="#acto">Acto</a>.</p>
+        <figure>
+          <img src="assets/registro-6.svg" width="1200" height="750" alt="" loading="lazy">
+          <figcaption><strong>Vista para el registro final.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
+        </figure>
+      </section>
+      <nav class="paso" aria-label="Continuar desde Obra"><a href="#observacion">← Volver a Observación</a><a href="#acto">Seguir a Acto →</a></nav>
+    </article>
+
+    <!-- ACTO -->
+    <article class="etapa" id="acto" data-etapa aria-labelledby="titulo-acto">
+      <header class="etapa-cabecera">
+        <h3 id="titulo-acto" class="titulo-etapa">Acto</h3>
+        <p class="bajada">Al compartir la obra, ¿qué aparece en el encuentro con el lugar y con quienes lo habitan?</p>
+      </header>
+      <section class="bloque" aria-labelledby="acto-lugar">
+        <h4 id="acto-lugar">El encuentro en el lugar</h4>
+        <p>Una imagen de conjunto puede situar el momento del encuentro y mostrar desde dónde se reunió o se movió la gente. El pie de foto permite distinguir ese momento del registro constructivo.</p>
+        <div class="galeria">
+          <figure>
+            <img src="assets/registro-6.svg" width="1200" height="750" alt="" loading="lazy">
+            <figcaption><strong>Lugar del encuentro.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/registro-2.svg" width="1200" height="750" alt="" loading="lazy">
+            <figcaption><strong>Registro del cierre.</strong> Imagen de ejemplo · Fecha y autoría por incorporar.</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="bloque" aria-labelledby="acto-compartir">
+        <h4 id="acto-compartir">Compartir la obra</h4>
+        <p>Un gesto, una lectura o una conversación pueden quedar registrados junto a una breve nota que sitúe quiénes participaron y qué se dijo o hizo en ese momento.</p>
+        <div class="registros">
+          <figure><figcaption><strong>Registro del encuentro</strong> · Video</figcaption><p>Registro por incorporar.</p></figure>
+          <figure><figcaption><strong>Lectura o testimonio</strong> · Audio</figcaption><p>Registro por incorporar.</p></figure>
+          <figure><figcaption><strong>Secuencia del cierre</strong> · GIF</figcaption><p>Registro por incorporar.</p></figure>
+        </div>
+      </section>
+      <section class="bloque" aria-labelledby="acto-despues">
+        <h4 id="acto-despues">Lo que queda abierto</h4>
+        <p>Las notas de cierre pueden volver a una pregunta de Observación para mostrar qué cambió durante el viaje y qué valdría la pena mirar otra vez.</p>
+      </section>
+      <nav class="paso" aria-label="Continuar desde Acto"><a href="#obra">← Volver a Obra</a><a href="#inicio">Volver a Inicio ↑</a></nav>
+    </article>
+  </section>
+</main>
+<footer class="pie">
+  <div class="contenedor pie-fila">
+    <span>Escuela de Arquitectura y Diseño · PUCV</span>
+    <a href="https://wiki.ead.pucv.cl/Categor%C3%ADa:Traves%C3%ADa">Travesías en Casiopea</a>
+  </div>
+</footer>
 </body>
 </html>
